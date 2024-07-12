@@ -11,6 +11,7 @@ import {
   AppendHTML,
   CheckboxHintsToggle,
   CheckboxSpoilersToggle,
+  CheckboxHideCompletedToggle,
   StorageAvailable,
   Benchmark,
   benchmarkTimes
@@ -2407,11 +2408,13 @@ function InitializeHTMLPopulation(db) {
   if (StorageAvailable('localStorage')) {
     if (localStorage.getItem("hkCheckboxHints") === "checked") document.getElementById("checkbox-hints").checked = true;
     if (localStorage.getItem("hkCheckboxSpoilers") === "checked") document.getElementById("checkbox-spoilers").checked = true;
+    if (localStorage.getItem("hkCheckboxHideCompleted") === "checked") document.getElementById("checkbox-hide-completed").checked = true;
   }
 
   // Prevents wrong checkbox behaviour (must run after everything is finished)
   CheckboxHintsToggle();
   CheckboxSpoilersToggle();
+  CheckboxHideCompletedToggle();
 }
 
 /**

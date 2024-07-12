@@ -941,6 +941,58 @@ function ToggleSaveModeSwitch() {
 }
 
 /**
+ * Toggles display of "hk-completed". On click with no parameters or on demand when called with a parameter
+ * @param {string} param "hide", "show" or none (optional)
+ */
+function CheckboxHideCompletedToggle(param = "none") {
+  let checkboxId = document.getElementById("checkbox-hide-completed");
+
+  switch (param) {
+    case "hide":
+      document.getElementById("generated").classList.remove("hide-completed");
+      checkboxId.value = "hide-completed-off";
+      checkboxId.checked = false;
+
+      // remember this choice for subsequent page visits and browser restarts
+      if (StorageAvailable('localStorage')) {
+        localStorage.setItem("hkCheckboxHideCompleted", "unchecked");
+      }
+      break;
+    case "show":
+      document.getElementById("generated").classList.add("hide-completed");
+      checkboxId.value = "hide-completed-on";
+      checkboxId.checked = true;
+
+      // remember this choice for subsequent page visits and browser restarts
+      if (StorageAvailable('localStorage')) {
+        localStorage.setItem("hkCheckboxHideCompleted", "checked");
+      }
+      break;
+    default:
+      // This runs when the checkbox is not checked
+      if (checkboxId.checked === false) {
+        document.getElementById("generated").classList.remove("hide-completed");
+        checkboxId.value = "hide-completed-off";
+
+        // remember this choice for subsequent page visits and browser restarts
+        if (StorageAvailable('localStorage')) {
+          localStorage.setItem("hkCheckboxHideCompleted", "unchecked");
+        }
+      }
+      // This runs when the checkbox is checked
+      else {
+        document.getElementById("generated").classList.add("hide-completed");
+        checkboxId.value = "hide-completed-on";
+
+        // remember this choice for subsequent page visits and browser restarts
+        if (StorageAvailable('localStorage')) {
+          localStorage.setItem("hkCheckboxHideCompleted", "checked");
+        }
+      }
+  }
+}
+
+/**
  * Toggles display of "hk-hints". On click with no parameters or on demand when called with a parameter
  * @param {string} param "hide", "show" or none (optional)
  */
@@ -1296,6 +1348,7 @@ document.getElementById("toggle-mode").addEventListener("click", ToggleSaveModeS
 
 document.getElementById("checkbox-hints").addEventListener("click", CheckboxHintsToggle, false);
 document.getElementById("checkbox-spoilers").addEventListener("click", CheckboxSpoilersToggle, false);
+document.getElementById("checkbox-hide-completed").addEventListener("click", CheckboxHideCompletedToggle, false);
 
 /* ------------ Drag & drop file to the window -------------- */
 
@@ -1372,6 +1425,7 @@ export {
   AppendHTML,
   CheckboxHintsToggle,
   CheckboxSpoilersToggle,
+  CheckboxHideCompletedToggle,
   StorageAvailable,
   Benchmark,
   benchmarkTimes
