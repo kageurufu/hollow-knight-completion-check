@@ -1418,6 +1418,13 @@ document.addEventListener("DOMContentLoaded", () => {
   })();
 });
 
+if (window.__TAURI__) {
+  document.addEventListener("DOMContentLoaded", async () => {
+    const tauri = await require("./tauri.js");
+    tauri.init();
+  });
+}
+
 /* ------------------------- Exports ------------------------------- */
 
 export {

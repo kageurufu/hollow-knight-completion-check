@@ -74,7 +74,10 @@ function LoadSaveFile(input, time) {
  * Launches the HKReadTextArea() function automatically after pasting the string to text area
  */
 function ProcessFileObject() {
-  let inputArrayBuffer = this.result;
+  ReadSaveFile(this.result);
+}
+
+function ReadSaveFile(inputArrayBuffer) {
   let decodedString;
 
   // 2. Decode file
@@ -214,5 +217,6 @@ document.getElementById("save-area-file").addEventListener("click", (mouseEvent)
 });
 
 export {
-  LoadSaveFile
+  LoadSaveFile,
+  ReadSaveFile
 };

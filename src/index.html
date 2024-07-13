@@ -70,14 +70,14 @@
       <br>
       <!-- <a href="https://pastebin.com/raw/shfZ4Vqs" target="_blank">[ Decoded 5% Save Example ]</a><br> -->
 
-      <div class="tooltip">
+      <div class="tooltip hide-tauri">
         <input type="text" id="save-location-input" value="%USERPROFILE%\AppData\LocalLow\Team Cherry\Hollow Knight\"
           readonly>
         <!-- <textarea id="save-location-input" value="%USERPROFILE%\AppData\LocalLow\Team Cherry\Hollow Knight\" readonly></textarea> -->
         <span class="tooltip-text" id="save-location-input-tooltip">Click once to copy to clipboard</span>
       </div>
 
-      <p class="smalltext">
+      <p class="smalltext hide-tauri">
         Choose a <strong>user*.dat</strong> save <em>or</em> paste text from <a href="https://bloodorca.github.io/hollow/" target="_blank">Save
           Editor</a> | <a href="https://pastebin.com/raw/xp1Gi7nG" target="_blank">Testing Save</a>
       </p>
@@ -85,7 +85,7 @@
 
     <div>
 
-      <div class="buttons centered">
+      <div class="buttons centered hide-tauri">
 
         <div class="input-buttons">
           <input id="toggle-mode" class="input-button" type="button" value="modeFile">
@@ -111,6 +111,10 @@
         placeholder="Paste your decoded save text from Save Editor here (Ctrl&nbsp;+&nbsp;V)"
         autofocus></textarea>
 
+        <label id="tauri-savelist-container" class="centered hidden">
+          <i class="icon-doc-text-inv"></i>Choose a Save File
+          <select name="tauri-savelist" id="tauri-savelist"><option disabled selected>Save Files</option></select>
+        </label>
       <div class="buttons">
 
         <!-- <div class="input-buttons"> -->
