@@ -328,6 +328,10 @@ input[type="file"] {
   font-style: italic;
 }
 
+.hide-completed .large-section .single-entry:not(:has(> .icon-cancel)) {
+  display: none;
+}
+
 .single-entry .spoiler-span,
 .single-entry .spoiler-span-green {
   margin-left: 0.4rem;
